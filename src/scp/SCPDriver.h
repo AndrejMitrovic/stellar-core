@@ -147,6 +147,10 @@ class SCPDriver
     // `toShortString` converts to the common name of a key if found
     virtual std::string toShortString(PublicKey const& pk) const;
 
+    // `getHashOf` computes the hash for the given array of array of bytes
+    virtual Hash
+    getHashOf(std::vector<xdr::opaque_vec<>> const& vals) const = 0;
+
     // `computeHashNode` is used by the nomination protocol to
     // randomize the order of messages between nodes.
     virtual uint64 computeHashNode(uint64 slotIndex, Value const& prev,
